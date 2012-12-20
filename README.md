@@ -24,7 +24,7 @@ Truncate will truncate the specified table.
 	#INSERT
 
 		# Insert into specified table the array of values
-		query.insert("TABLE_NAME", ["'#{value[0]}', '#value[1]', '#value[2]'"])
+		query.insert("TABLE_NAME", ["'#{value[0]}', '#{value[1]}', '#{value[2]}'"])
 
 	#TRUNCATE
 
