@@ -1,8 +1,8 @@
 require 'oci8'
 
 class Oracle
-  def initialize (username, password, db)
-    @oci = OCI8.new(username, password, db)
+  def initialize (username, password, db_connection)
+    @oci = OCI8.new(username, password, db_connection)
   end
 
   def select (query, var)
