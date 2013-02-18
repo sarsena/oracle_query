@@ -15,6 +15,7 @@ Truncate will truncate the specified table.
 
 		# Query the selected table and return the results in a variable you specifiy
 		# Example in this case $my_array
+		
 		query.select("SELECT * from TABLE_NAME", "my_array")
 
 		$my_array.each { |result| 
@@ -28,7 +29,7 @@ Truncate will truncate the specified table.
 
 	#APPEND
 
-		#Similar Insert except Appends
+		#Similar to Insert except Appends
 		query.append("TABLE_NAME", ["'#{value[0]}', '#{value[1]}', '#{value[2]}'"])
 
 	#UPDATE
@@ -38,7 +39,7 @@ Truncate will truncate the specified table.
 
 	#TRUNCATE
 
-		# Truncates specified table
+		#Truncates specified table
 		query.truncate("TABLE_NAME")
 
 	#DELETE
