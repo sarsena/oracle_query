@@ -15,11 +15,23 @@ class Oracle
   end
 
   #Set table name and values ["name = 'John', employee_id = 39994"]
-  def insert (table, values)
-    @oci.exec("INSERT INTO #{table} VALUES(#{values[0]})")
-    @oci.commit
+  def insert (table, values, rollback)
+    if rollback == false
+      @oci.exec("INSERT INTO #{table} VALUES(#{values[0]})")
+      @oci.commit
+    else
+      @oci.exec("INSERT INTO #{table} VALUES(#{values[0]})")
+    end
   end
 
+  def commit()
+    @oci.commit
+  end
+  
+  def rollback()
+    @oci.rollback
+  end
+  
   #Set table name and values ["name = 'John', employee_id = 39994"]
   def append (table, values)
     @oci.exec("INSERT /*+ append */ INTO #{table} VALUES(#{values[0]})")

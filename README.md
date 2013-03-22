@@ -25,7 +25,29 @@ Truncate will truncate the specified table.
 	#INSERT
 
 		# Insert into specified table the array of values
-		query.insert("TABLE_NAME", ["'#{value[0]}', '#{value[1]}', '#{value[2]}'"])
+		# 3rd param is to turn rollback On/Off
+		# If false insert will commit everytime a successful row is inserted into the table causing partial inserts
+		
+		query.insert("TABLE_NAME", ["'#{value[0]}', '#{value[1]}', '#{value[2]}'"], true || false )
+
+	#ROLLBACK / COMMIT w INSERT
+		
+		# For inserting into a table you could produce errors and perform partial inserts.
+		# To prevent this the rollback feature allows for all successful inserts to 
+		# revert back to before the inserts started.  To call this feature simply add a 3rd param == true
+		# Call inside your rescue the rollback and any logging
+		# Then specify outside your rescue Error handling the commit.
+		
+		begin
+			#your values inserting
+			query.insert("TABLE_NAME", ["'#{value[0]}', '#{value[1]}', '#{value[2]}'"], true)
+		rescue Exception => e
+			p "FAILED ROLLBACK"
+			query.rollback
+			# Log the error message somewhere
+		end
+
+		query.commit
 
 	#APPEND
 
