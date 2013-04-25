@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name      = 'oracle_query'
-  s.version   = '0.1.3'
-  s.date      = '2013-03-22'
+  s.version   = '0.1.4'
+  s.date      = '2013-04-25'
   s.summary   = 'Oracle Query!'
   s.description = 'A way to neatly query Oracle with Ruby'
   s.authors     = ['Steven Arsena']

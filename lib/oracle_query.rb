@@ -45,9 +45,15 @@ class Oracle
   end
 
   #set Table name, Values to update ["name = 'John', id = 30"], where columns = values
-  def update (table, values, where)
-    @oci.exec("UPDATE #{table} SET #{values[0]} WHERE #{where}")
-    @oci.commit
+  #omitt set to false omitts where clause
+  def update (table, values, where, omitt)
+    if omitt == false
+      @oci.exec("UPDATE #{table} SET #{values[0]} WHERE #{where}")
+      @oci.commit
+    else
+      @oci.exec("UPDATE #{table} SET #{values[0]}")
+      @oci.commit
+    end
   end
 
   #Set table to name of table you wish to delete
