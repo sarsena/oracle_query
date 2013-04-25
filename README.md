@@ -57,8 +57,10 @@ Truncate will truncate the specified table.
 	#UPDATE
 
 		#Updates the values specified where columns = values
-		$query.update("TABLE_NAME", ["column_one = 'John Smith'"], "column_one = 'Mark Smith'")
-
+		#4th param indicates if you want to omitt the where clause or keep it
+		$query.update("TABLE_NAME", ["column_one = 'John Smith'"], "column_one = 'Mark Smith'", false)
+		$query.update("TABLE_NAME", ["column_one = 'John Smith'"], '', true)
+		
 	#TRUNCATE
 
 		#Truncates specified table
