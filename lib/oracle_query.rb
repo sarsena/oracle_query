@@ -24,6 +24,12 @@ class Oracle
     end
   end
 
+  #Set table name, set merge from table, columns to link on, set values when match, set the insert_cols and value_col when no match found
+  def merge (table, table_temp, columns, values, insert_col, value_col)
+    @oci.exec("MERGE INTO #{table} USING #{table_temp} ON (#{columns[0]}) WHEN MATCHED THEN UPDATE SET #{values[0]} WHEN NOT MATCHED THEN INSERT (#{insert_col[0]}) VALUES (#{value_col[0]})")
+    @oci.commit
+  end
+  
   def commit()
     @oci.commit
   end

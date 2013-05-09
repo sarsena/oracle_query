@@ -30,6 +30,18 @@ Truncate will truncate the specified table.
 		
 		query.insert("TABLE_NAME", ["'#{value[0]}', '#{value[1]}', '#{value[2]}'"], true || false )
 
+	#MERGE
+	
+		# Merges data from one table to another
+		# First specify the table you want to perform the merge on
+		# Second specify the table you are getting the data from temp table
+		# Third the columns to link on as an array ["table.col1 = temp_table.col1"]
+		# Values for when match exists as an array ["table.col2 = temp_table.col2, table.col3 = temp_table.col3"]
+		# Insert Columns from the final table for when match doesnt exist as an array ["table.col1, table.col2"]
+		# Insert Values from the temp table for when match doesnt exist as an array ["temp_table.col1, temp_table.col2"]
+
+		query.merge("SCHEMA.TABLE_NAME table_name", "SCHEMA.TEMP_TABLE_NAME temp_table", ["table_name.orderid = temp_table.orderid"], ["table_name.first_name = temp_table.first_name, table_name.last_name = temp_table.last_name"], ["table_name.orderid, table_name.first_name, table_name.last_name"], ["temp_table.orderid, temp_table.first_name, temp_table.last_name"])
+	
 	#ROLLBACK / COMMIT w INSERT
 		
 		# For inserting into a table you could produce errors and perform partial inserts.
