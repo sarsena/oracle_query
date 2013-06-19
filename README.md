@@ -99,3 +99,8 @@ Truncate will truncate the specified table.
 		#Creates a new specified table
 		$query.create("TABLE_NAME", [["column_one",'varchar (20 BYTE)'], ["column_two", 'NUMBER']])
 
+	#PROCEDURES
+		
+		#Runs any given defined procedure
+		$query.procedure("MYPROCEDURE()")
+

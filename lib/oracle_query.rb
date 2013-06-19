@@ -5,6 +5,10 @@ class Oracle
     @oci = OCI8.new(username, password, db_connection)
   end
 
+  def procedure(procedure)
+    @oci.exec("BEGIN #{procedure}; END;")
+  end
+
   def select (query, var)
     variable = var
     @variable = []
